@@ -9,7 +9,7 @@ public class Main {
         }
     }
 
-    public static void deliveryCard(int deliveryDistance) {
+    public static int deliveryCard(int deliveryDistance) {
         int day = 0;
         if (deliveryDistance > 0) {
             day += 1;
@@ -23,45 +23,44 @@ public class Main {
         if (deliveryDistance > 100) {
             day = -1;
         }
-        if (day > 0) {
-            System.out.println("Потребуется дней: " + day);
-        } else {
-            System.out.println("Доставки нет");
-        }
+        return day;
+
     }
-    public static void chekOs(int os) {
-       // int currentYear =2010;
+
+    public static void chekOs(int os, int year) {
         int currentYear = LocalDate.now().getYear();
-        if (os == 0)  {
-            if (currentYear < 2015) {
-                System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-            }else {
-                System.out.println("Установите версию приложения для iOS по ссылке");
-            }
-        } else if (os == 1) {
-            if (currentYear < 2015) {
-                System.out.println("Установите облегченную версию приложения для Android по ссылке");
-            }else  {
-                System.out.println("Установите версию приложения для Android по ссылке");
-            }
-        }else {
-            System.out.println("Операционная система не определена");
+        if (year < currentYear && os == 0) {
+            System.out.println("Установите облегченную версию приложения для iOS по ссылке");
+        } else if (year < currentYear && os == 1) {
+            System.out.println("Установите облегченную версию приложения для Android по ссылке");
+        } else if (year > currentYear && os == 0) {
+            System.out.println("Установите версию приложения для iOS по ссылке");
+        } else if (year > currentYear && os == 1) {
+            System.out.println("Установите версию приложения для Android по ссылке");
+        } else {
+            System.out.println("Неверная опереционная система");
         }
 
     }
+
     public static void main(String[] args) {
         System.out.println("Задание 1");
         int year = 2021;
         chekYear(year);
 
         System.out.println("Задание 2");
-        int os = 0;
-        chekOs(os);
+        int os = 0; //0 — iOS, 1 — Android
+        year = 2020;
+        chekOs(os,year);
 
         System.out.println("Задание 3");
         int deliveryDistance = 95;
-        deliveryCard(deliveryDistance);
-
+        int day = deliveryCard(deliveryDistance);
+        if (day>0){
+            System.out.println("Потребуется дней: " + day);
+        }else {
+            System.out.println("Доставки нет");
+        }
 
     }
 }
