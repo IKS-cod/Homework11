@@ -9,7 +9,7 @@ public class Main {
         }
     }
 
-    public static int deliveryCard(int deliveryDistance) {
+    public static int calculateDeliveryDays(int deliveryDistance) {
         int day = 0;
         if (deliveryDistance > 0) {
             day += 1;
@@ -33,9 +33,9 @@ public class Main {
             System.out.println("Установите облегченную версию приложения для iOS по ссылке");
         } else if (year < currentYear && os == 1) {
             System.out.println("Установите облегченную версию приложения для Android по ссылке");
-        } else if (year > currentYear && os == 0) {
+        } else if (year >= currentYear && os == 0) {
             System.out.println("Установите версию приложения для iOS по ссылке");
-        } else if (year > currentYear && os == 1) {
+        } else if (year >= currentYear && os == 1) {
             System.out.println("Установите версию приложения для Android по ссылке");
         } else {
             System.out.println("Неверная опереционная система");
@@ -55,7 +55,7 @@ public class Main {
 
         System.out.println("Задание 3");
         int deliveryDistance = 95;
-        int day = deliveryCard(deliveryDistance);
+        int day = calculateDeliveryDays(deliveryDistance);
         if (day>0){
             System.out.println("Потребуется дней: " + day);
         }else {
